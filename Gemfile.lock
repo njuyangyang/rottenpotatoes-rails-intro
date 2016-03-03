@@ -177,7 +177,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   pg
-  rails (= 4.2.1)
+  rails (>= 4.2.1)
   rails_12factor
   rspec-rails
   sass-rails (~> 5.0)
@@ -189,4 +189,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.10.6
+   1.11.2
