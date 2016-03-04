@@ -14,15 +14,24 @@ class MoviesController < ApplicationController
 
     @all_ratings=Movie.pluck(:rating).uniq
     
-    @sort = params[:sort] 
-
-    #@ratings = params[:ratings].keys
-
-    if params[:ratings].nil?
-      @rating=@all_ratings
+    if params[:sort]
+      @sort=params[:sort]
+      session[:sort]=@sort
     else
+      @sort=session[:sort]
+    end 
+
+    if params[:ratings]
       @rating=params[:ratings].keys
+      session[:ratings]=params[:ratings]
+    else
+      if session[:ratings]
+        @rating=session[:ratings].keys
+      else
+        @rating=all_ratings
+      end
     end
+
     @movies_prepare=Movie.all.select{|x| @rating.include? x.rating}
     if @sort
       @movies= @movies_prepare.sort{|x,y| x.send(@sort) <=> y.send(@sort)}
