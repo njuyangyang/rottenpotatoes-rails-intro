@@ -28,7 +28,7 @@ class MoviesController < ApplicationController
       if session[:ratings]
         @rating=session[:ratings].keys
       else
-        @rating=all_ratings
+        @rating=@all_ratings
       end
     end
 
